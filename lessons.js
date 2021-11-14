@@ -1,33 +1,39 @@
-let webstore = new Vue({
-    el: '#app',
-    data: {
-        sitename: "After School Club",
-        product: {
-            id: 1,
-            subject: "Math",
-            location: "Hendon",
-            price: 1000,
-            image: "img/Math.png",
-            availableInventory : 5,
-            spaces: 5,
-        },
-        cart: []
+let lessons = [
+    {
+        id: 1,
+        subject: "Math",
+        location: "Hendon",
+        price: 1000,
+        image: "img/Math.png",
+        availableInventory : 5,
+        spaces: 5,
     },
-    methods: {
-        addToCart: function (){
-            this.product.stock = this.product.stock -1;
-            this.cart.push(this.product.id);
-        },
-        showCheckout(){
-            this.showProduct = this.showProduct ? false : true;
-        },
+    {
+        id: 2,
+        subject: "Math",
+        location: "Hendon",
+        price: 1000,
+        image: "img/Math.png",
+        availableInventory : 5,
+        spaces: 5,
     },
-    computed: {
-        cartItemCount: function(){
-            return this.cart.length || ' ';
-        },
-        canAddToCart: function(){
-            return this.product.availableInventory > this.cartItemCount;
-        }
+    {
+        id: 3,
+        subject: "Math",
+        location: "Hendon",
+        price: 1000,
+        image: "img/Math.png",
+        availableInventory : 5,
+        spaces: 5,
+    },
+    {
+        id: 4,
+        subject: "Math",
+        location: "Hendon",
+        price: 1000,
+        image: "img/Math.png",
+        availableInventory : 5,
+        spaces: 5,
     }
-});
+
+]

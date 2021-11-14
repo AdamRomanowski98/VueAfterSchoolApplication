@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" >
     <script src="https://unpkg.com/vue"></script>
+    <script src="lessons.js"></script>
     
     <title>Document</title>
 </head>
 <body>
-
     <div id="app">
-        
         <header id="mainHeader">
                 <h1 v-text="sitename"></h1>
                 <button v-on:click="showCheckout" class="checkoutButton">
@@ -22,30 +21,77 @@
                     Checkout
                 </button>
         </header>
-        <main>
+    <main>
+    <div v-if="showProduct">
+        <div v-for="lesson in lessons">
             <div class="item">
                 <img v-bind:src="product.image" class="subject" width="150" height="150">
                 <h3>Subject: {{product.subject}}</h3>
-                <p>Location: {{product.location}}</p>
-                <p>Price: {{product.price}}</p>
-                <p>Spaces: {{product.spaces}}</p>
-                <div class="btn-class">
-                    <button class="add" v-on:click="addToCart" v-if="canAddToCart">
-                        <span><i class="fas fa-cart-plus"></i></span>
-                        Add to cart
-                        {{cartItemCount}}
-                    </button>
-                    <button disabled="disabled" class="add" v-else>
-                        Add to Cart
-                    </button>
-                </div>
-                
-
+                    <p>Location: {{product.location}}</p>
+                    <p>Price: {{product.price}}</p>
+                    <p>Spaces: {{product.spaces}}</p>
+                    <div class="btn-class">
+                        <button class="add" v-on:click="addToCart" v-if="canAddToCart">
+                            <span><i class="fas fa-cart-plus"></i></span>
+                            Add to cart
+                            {{cartItemCount}}
+                        </button>
+                        <button disabled="disabled" class="add" v-else>
+                            Add to Cart
+                        </button>
+                    </div>
             </div>
-        </main>
+        </div>
+    </div>
+        <div v-else>
+
+        </div>
+    </main>
     </div>
 
-    <script src="lessons.js"></script>
+
+    <script>
+
+let webstore = new Vue({
+    el: '#app',
+    data: {
+        sitename: "After School Club",
+        lessons: lessons,
+        product: {
+            id: 1,
+            subject: "Math",
+            location: "Hendon",
+            price: 1000,
+            image: "img/Math.png",
+            availableInventory : 5,
+            spaces: 5,
+        },
+        cart: [],
+        showProduct: true,
+    },
+    methods: {
+        addToCart: function (){
+            this.product.spaces = this.product.spaces -1;
+            this.cart.push(this.product.id);
+        },
+        showCheckout(){
+            this.showProduct = this.showProduct ? false : true;
+        },
+    },
+    computed: {
+        cartItemCount: function(){
+            return this.cart.length || ' ';
+        },
+        canAddToCart: function(){
+            return this.product.availableInventory > this.cartItemCount;
+        }
+    }
+});
+
+
+    </script>
+
+   
 
     
 
