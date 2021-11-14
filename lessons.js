@@ -10,7 +10,7 @@ let lessons = [
     },
     {
         id: 2,
-        subject: "Math",
+        subject: "IT",
         location: "Hendon",
         price: 1000,
         image: "img/Math.png",
@@ -19,7 +19,7 @@ let lessons = [
     },
     {
         id: 3,
-        subject: "Math",
+        subject: "Polski",
         location: "Hendon",
         price: 1000,
         image: "img/Math.png",
@@ -28,7 +28,7 @@ let lessons = [
     },
     {
         id: 4,
-        subject: "Math",
+        subject: "Matematyka",
         location: "Hendon",
         price: 1000,
         image: "img/Math.png",

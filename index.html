@@ -23,18 +23,18 @@
         </header>
     <main>
     <div v-if="showProduct">
-        <div v-for="lesson in lessons">
+        <div v-for="product in lessons">
             <div class="item">
                 <img v-bind:src="product.image" class="subject" width="150" height="150">
-                <h3>Subject: {{product.subject}}</h3>
+                    <h3>Subject: {{product.subject}}</h3>
                     <p>Location: {{product.location}}</p>
                     <p>Price: {{product.price}}</p>
                     <p>Spaces: {{product.spaces}}</p>
                     <div class="btn-class">
-                        <button class="add" v-on:click="addToCart" v-if="canAddToCart">
+                        <button class="add" v-on:click="addToCart(product)" v-if="canAddToCart(product)">
                             <span><i class="fas fa-cart-plus"></i></span>
                             Add to cart
-                            {{cartItemCount}}
+                            
                         </button>
                         <button disabled="disabled" class="add" v-else>
                             Add to Cart
@@ -57,34 +57,35 @@ let webstore = new Vue({
     data: {
         sitename: "After School Club",
         lessons: lessons,
-        product: {
-            id: 1,
-            subject: "Math",
-            location: "Hendon",
-            price: 1000,
-            image: "img/Math.png",
-            availableInventory : 5,
-            spaces: 5,
-        },
         cart: [],
         showProduct: true,
     },
     methods: {
-        addToCart: function (){
-            this.product.spaces = this.product.spaces -1;
-            this.cart.push(this.product.id);
+        addToCart(product){
+            product.spaces = product.spaces -1;
+            this.cart.push(product.id);
         },
         showCheckout(){
             this.showProduct = this.showProduct ? false : true;
         },
+        canAddToCart(product){
+            return product.availableInventory > this.cartCount(product.id);
+        },
+        cartCount(id){
+            let count = 0;
+            for(let i=0; i<this.cart.length; i++){
+                if(this.cart[i] === id){
+                    count++;
+                }
+            }
+            return count;
+        }
     },
     computed: {
-        cartItemCount: function(){
+        cartItemCount(){
             return this.cart.length || ' ';
         },
-        canAddToCart: function(){
-            return this.product.availableInventory > this.cartItemCount;
-        }
+        
     }
 });
 
