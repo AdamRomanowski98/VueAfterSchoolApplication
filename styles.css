@@ -1,0 +1,48 @@
+#app{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item{
+    border: 1px solid black;
+    height: 210px;
+    padding: 15px;
+    width: 300px;
+    border-radius: 10%;
+    
+}
+
+.btn-class{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.add {
+    height: 40px;
+    width: 150px
+}
+
+
+.subject{
+    float: left;
+    margin-right: 10px;
+}
+
+#mainHeader{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+
+.checkoutButton{
+    height: 10x;
+}
+
+
+
