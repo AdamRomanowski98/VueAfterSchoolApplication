@@ -4,13 +4,21 @@
     margin-right: auto;
 }
 
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    
+}
+
 .item{
     border: 1px solid black;
     height: 210px;
     padding: 15px;
-    width: 300px;
+    width: 280px;
     border-radius: 10%;
-    
+    margin: 10px;
 }
 
 .btn-class{
