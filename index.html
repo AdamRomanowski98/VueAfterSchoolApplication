@@ -26,16 +26,19 @@
             
         </header>
     <main>
-    <h3>
-        Search: <input type="text" v-model="search" placeholder="Search classes">
-    </h3>
-    <h3>
-        Sort by:
-        <button @click="priceLowHigh">Price low to High</button>
-        <button @click="priceHighLow">Price High to Low</button>
-    </h3>
+   
 
     <div v-if="showProduct" class='container'>
+        <div class="search">
+            <h3>
+                Search: <input type="text" v-model="search" placeholder="Search classes">
+            </h3>
+            <h3>
+                Sort by:
+                <button @click="priceLowHigh">Price low to High</button>
+                <button @click="priceHighLow">Price High to Low</button>
+            </h3>
+        </div>
         <div v-for="product in filteredLessons">
             <div class="item">
                 <img v-bind:src="product.image" class="subject" width="135" height="150">
@@ -55,36 +58,42 @@
             </div>
         </div>
     </div>
-        <div v-else>
-            <h2>Checkout</h2>
-            <p>
-                <strong>First name: </strong>
-                <input v-model="order.firstName">
-            </p>
-            <p>
-                <strong>Last name: </strong>
-                <input v-model="order.lastName">
-            </p>
-            <p>
-                <strong>Phone Number: </strong>
-                <input v-model="order.phoneNumber">
-            </p>
+        <div v-else class="check">
+            <div class="checkOut">
+                <h2>Checkout</h2>
+                <p>
+                    <strong>First name: </strong>
+                    <input v-model="order.firstName">
+                </p>
+                <p>
+                    <strong>Last name: </strong>
+                    <input v-model="order.lastName">
+                </p>
+                <p>
+                    <strong>Phone Number: </strong>
+                    <input v-model="order.phoneNumber">
+                </p>
 
-            <h3>Order information</h3>
-            <p>First name: {{order.firstName}}</p>
-            <p>First name: {{order.lastName}}</p>
-            <p>Phone number: {{order.phoneNumber}}</p>
+                <h3>Order information</h3>
+                <p>First name: {{order.firstName}}</p>
+                <p>First name: {{order.lastName}}</p>
+                <p>Phone number: {{order.phoneNumber}}</p>
 
-            <button v-on:click="submitForm">Place Order</button>
+                <button @click="submitForm" v-if="canPlaceOrder">Place Order</button>
+                <button disabled v-else>Place Order</button>
+            </div>
+
+            <div class="orderList">
+                <h2>Order List</h2>
+                <div v-for="(cartItem, key) in cart">
+                    <p>{{cartItem}}
+                        <button @click ="removeFromCart(cartItem, key)">Remove</button>
+                    </p>
+                </div> 
+            </div>
 
         </div>
-
-        <h2>Order List</h2>
-        <div v-for="cartItem in cart">
-            <p>{{cartItem}}
-                <button @click ="removeFromCart(cartItem)">Remove</button>
-            </p>
-        </div> 
+        
 
     </main>
     </div>
@@ -110,12 +119,21 @@ let webstore = new Vue({
         addToCart(product){
             product.spaces = product.spaces -1;
             this.cart.push(product.subject);
+          
         },
         showCheckout(){
             this.showProduct = this.showProduct ? false : true;
         },
         canAddToCart(product){
-            return product.availableInventory > this.cartCount(product.id);
+            return product.availableInventory > this.cartCount(product.subject);
+        },
+        removeFromCart(subjectName, key){
+            this.lessons.forEach(product => {
+                if(product.subject == subjectName){
+                    product.spaces++;
+                    this.cart.splice(key, 1);
+                }
+            })
         },
         cartCount(id){
             let count = 0;
@@ -146,7 +164,16 @@ let webstore = new Vue({
                 return product.subject.match(this.search);
                 
             });
-        }
+        },
+        canPlaceOrder(){
+           
+            if ((this.order.firstName && this.order.lastName && this.order.phoneNumber) && (!isNaN((this.order.phoneNumber)))) {
+                return true;
+                }
+            else{
+                return false;
+                }
+        },
     }
 });
 
