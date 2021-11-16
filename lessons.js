@@ -5,8 +5,8 @@ let lessons = [
         location: "Hendon",
         price: 50,
         image: "img/Math.png",
-        availableInventory : 10,
-        spaces: 10,
+        availableInventory : 5,
+        spaces: 5,
     },
     {
         id: 2,
@@ -23,8 +23,8 @@ let lessons = [
         location: "Hendon",
         price: 30,
         image: "img/History.png",
-        availableInventory : 15,
-        spaces: 15,
+        availableInventory : 5,
+        spaces: 5,
     },
     {
         id: 4,
@@ -41,8 +41,8 @@ let lessons = [
         location: "Hendon",
         price: 10,
         image: "img/Basketball.png",
-        availableInventory : 7,
-        spaces: 7,
+        availableInventory : 5,
+        spaces: 5,
     },
     {
         id: 6,
@@ -50,8 +50,8 @@ let lessons = [
         location: "Hendon",
         price: 10,
         image: "img/Football.jpg",
-        availableInventory : 10,
-        spaces: 10,
+        availableInventory : 5,
+        spaces: 5,
     },
     {
         id: 7,
@@ -68,8 +68,8 @@ let lessons = [
         location: "Hendon",
         price: 20,
         image: "img/Literature.png",
-        availableInventory : 20,
-        spaces: 20,
+        availableInventory : 5,
+        spaces: 5,
     },
     {
         id: 9,
@@ -86,8 +86,8 @@ let lessons = [
         location: "Hendon",
         price: 25,
         image: "img/Physics.jpg",
-        availableInventory : 10,
-        spaces: 10,
+        availableInventory : 5,
+        spaces: 5,
     },
 
 

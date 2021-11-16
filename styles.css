@@ -1,7 +1,17 @@
-#app{
+main{
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
+}
+
+#mainHeader{
+    width: 100%;
+    background-color: grey;
+    margin-bottom: 50px;
+}
+
+.sitename{
+    margin-left: 50px;
 }
 
 
@@ -48,6 +58,7 @@
 
 .checkoutButton{
     height: 10x;
+    margin-right: 50px;
 }
 
 
