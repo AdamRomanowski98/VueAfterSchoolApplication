@@ -161,7 +161,8 @@ let webstore = new Vue({
 
         filteredLessons(){
             return this.lessons.filter((product) => {
-                return product.subject.match(this.search);
+                return (product.subject.toLowerCase().match(this.search) || product.subject.match(this.search));
+                
                 
             });
         },
