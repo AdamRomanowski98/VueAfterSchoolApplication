@@ -163,12 +163,14 @@ let webstore = new Vue({
             return this.lessons.filter((product) => {
                 return (product.subject.toLowerCase().match(this.search) || product.subject.match(this.search));
                 
-                
             });
         },
         canPlaceOrder(){
+
            
-            if ((this.order.firstName && this.order.lastName && this.order.phoneNumber) && (!isNaN((this.order.phoneNumber)))) {
+            let regex = new RegExp(/^[a-zA-Z]+$/);
+           
+            if ((this.order.firstName && this.order.lastName && this.order.phoneNumber) && (regex.test(this.order.firstName) == true && regex.test(this.order.lastName) == true ) &&(!isNaN((this.order.phoneNumber)))) {
                 return true;
                 }
             else{
