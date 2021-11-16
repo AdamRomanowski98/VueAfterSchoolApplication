@@ -25,11 +25,11 @@
     <div v-if="showProduct" class='container'>
         <div v-for="product in lessons">
             <div class="item">
-                <img v-bind:src="product.image" class="subject" width="150" height="150">
-                    <h3>Subject: {{product.subject}}</h3>
-                    <p>Location: {{product.location}}</p>
-                    <p>Price: {{product.price}}</p>
-                    <p>Spaces: {{product.spaces}}</p>
+                <img v-bind:src="product.image" class="subject" width="135" height="150">
+                    <h3>{{product.subject}}</h3>
+                    <p>{{product.location}}</p>
+                    <p>£{{product.price}}/month</p>
+                    <p>Available spaces: {{product.spaces}}</p>
                     <div class="btn-class">
                         <button class="add" v-on:click="addToCart(product)" v-if="canAddToCart(product)">
                             <span><i class="fas fa-cart-plus"></i></span>
