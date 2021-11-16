@@ -15,11 +15,15 @@
     <div id="app">
         <header id="mainHeader">
                 <h1 v-text="sitename" class="sitename"></h1>
-                <button v-on:click="showCheckout" class="checkoutButton">
+                
+                <button @click="showCheckout" v-if="cartItemCount>0" class="checkoutButton">
                     {{cartItemCount}}
                     <span class="fas fa-cart-plus"></span>
                     Checkout
                 </button>
+                <button hidden v-else>
+                </button>
+            
         </header>
     <main>
     <h3>
@@ -74,6 +78,14 @@
             <button v-on:click="submitForm">Place Order</button>
 
         </div>
+
+        <h2>Order List</h2>
+        <div v-for="cartItem in cart">
+            <p>{{cartItem}}
+                <button @click ="removeFromCart(cartItem)">Remove</button>
+            </p>
+        </div> 
+
     </main>
     </div>
 
@@ -97,7 +109,7 @@ let webstore = new Vue({
     methods: {
         addToCart(product){
             product.spaces = product.spaces -1;
-            this.cart.push(product.id);
+            this.cart.push(product.subject);
         },
         showCheckout(){
             this.showProduct = this.showProduct ? false : true;
@@ -123,9 +135,6 @@ let webstore = new Vue({
         priceHighLow(){
             this.lessons.sort((a,b) => a.price < b.price ? 1 : -1);
         },
-
-
-
     },
     computed: {
         cartItemCount(){
@@ -135,6 +144,7 @@ let webstore = new Vue({
         filteredLessons(){
             return this.lessons.filter((product) => {
                 return product.subject.match(this.search);
+                
             });
         }
     }
