@@ -20,7 +20,7 @@ let lessons = [
     {
         id: 3,
         subject: "History Classes",
-        location: "Hendon",
+        location: "Edgware",
         price: 30,
         image: "img/History.png",
         availableInventory : 5,
@@ -47,7 +47,7 @@ let lessons = [
     {
         id: 6,
         subject: "Football Club",
-        location: "Hendon",
+        location: "Camden",
         price: 10,
         image: "img/Football.jpg",
         availableInventory : 5,
@@ -65,7 +65,7 @@ let lessons = [
     {
         id: 8,
         subject: "Literature Club",
-        location: "Hendon",
+        location: "Hammersmith",
         price: 20,
         image: "img/Literature.png",
         availableInventory : 5,
@@ -83,7 +83,7 @@ let lessons = [
     {
         id: 10,
         subject: "Physics",
-        location: "Hendon",
+        location: "Colindale",
         price: 25,
         image: "img/Physics.jpg",
         availableInventory : 5,
